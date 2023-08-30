@@ -1,1 +1,1 @@
-# StudySpace-React
+# React courses
