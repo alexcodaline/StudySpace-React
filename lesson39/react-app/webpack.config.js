@@ -28,4 +28,8 @@ module.exports = {
   optimization: {
     minimizer: isProd ? [new CssMinimizerPlugin(), new TreserPlugin()] : [],
   },
+  devServer: {
+    watchFiles: path.resolve(__dirname, "src"),
+    port: 3000,
+  },
 };
