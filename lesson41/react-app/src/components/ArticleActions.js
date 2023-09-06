@@ -1,15 +1,19 @@
-import React, {Component} from "react";
 
-class ArticleActions extends Component{
+import React, { Component } from "react";
+import LangContext from "./lang-context";
 
-  render(){
+class ArticleActions extends Component {
+  render() {
     return (
-      <div className="article__actions">
-        <button className="article__btn">Read</button>
-      </div>
+      <LangContext.Consumer>
+        {(context) => (
+          <div className="article__actions">
+            <button className="article__btn">{context.button}</button>
+          </div>
+        )}
+      </LangContext.Consumer>
     );
   }
 }
 
 export default ArticleActions;
-
