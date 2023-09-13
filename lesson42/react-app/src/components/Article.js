@@ -7,8 +7,8 @@ function Article(props) {
     return (
     <>
     {props.children}
-    <ArticleBody show={props.show} text={props.text} />
-    <ArticleAuthor /> 
+    <ArticleBody show={props.show} languageData={props.text} isRead={props.isRead} />
+    <ArticleAuthor languageData={props.text}/> 
     </>
     );
   }
