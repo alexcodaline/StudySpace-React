@@ -1,49 +1,59 @@
 import React, { useState, useEffect } from "react";
 
-  function App () {
-  const [coffe, setCoffe] = useState(0);
-  const [sugar, setSugar] = useState(0);
+function App() {
+  const [products, setProducts] = useState({
+    coffee: 0,
+    sugar: 0,
+  });
 
-const addCoffe = () => setCoffe(coffe + 1);
-const addSugar = () => setSugar(sugar + 1);
+  const [showRemoveCoffee, setShowRemoveCoffee] = useState(false);
+  const [showRemoveSugar, setShowRemoveSugar] = useState(false);
 
-const save = () => {
-  localStorage.setItem('coffe', coffe);
-  localStorage.setItem('sugar', sugar);
-}
+  useEffect(() => {
+    setShowRemoveCoffee(products.coffee > 0);
+    setShowRemoveSugar(products.sugar > 0);
+  }, [products]);
 
-const clear = () => {
-    localStorage.removeItem('coffe');
-    localStorage.removeItem('sugar');
-    setCoffe(0);
-    setSugar(0);
-}
+  const addCoffee = () =>
+    setProducts((prevState) => ({
+      ...prevState,
+      coffee: prevState.coffee + 1,
+    }));
 
-useEffect(()=>{
-  if (localStorage.getItem('coffe')){
-    setCoffe(+localStorage.getItem('coffe'));
-    setSugar(+localStorage.getItem('sugar'));
-  }
-}, []);
+  const addSugar = () =>
+    setProducts((prevState) => ({
+      ...prevState,
+      sugar: prevState.sugar + 1,
+    }));
 
-return (
-  <div className="wrapper">
-    <div className="list">
-      <h1>Product list</h1>
-      <div className='product'>
-      <span>{`Coffe: ${coffe}`}</span>
-      <button onClick={addCoffe}>Add</button>
-      </div>
-      <div className='product'>
-      <span>{`Sugar: ${sugar}`}</span>
-        <button onClick={addSugar}>Add</button>
-      </div>
-      <div className='save'>
-          <button onClick={save}>SAVE</button>
-          <button onClick={clear}>CLEAR</button>
+  const removeCoffee = () =>
+    setProducts((prevState) => ({
+      ...prevState,
+      coffee: Math.max(prevState.coffee - 1, 0),
+    }));
+
+  const removeSugar = () =>
+    setProducts((prevState) => ({
+      ...prevState,
+      sugar: Math.max(prevState.sugar - 1, 0),
+    }));
+
+  return (
+    <div className="wrapper">
+      <div className="list">
+        <h1>Product list</h1>
+        <div className="product">
+          <span>{`Coffee: ${products.coffee}`}</span>
+          <button onClick={addCoffee}>Add</button>
+          {showRemoveCoffee && <button onClick={removeCoffee}>Remove</button>}
         </div>
+        <div className="product">
+          <span>{`Sugar: ${products.sugar}`}</span>
+          <button onClick={addSugar}>Add</button>
+          {showRemoveSugar && <button onClick={removeSugar}>Remove</button>}
+        </div>
+      </div>
     </div>
-  </div> 
   );
 }
 
