@@ -14,7 +14,7 @@ function App() {
     id: 3,
   });
 
-  const validName = () => newProducts.name.length > 1;
+  const validName = () => newProducts.name.trim().length > 1;
   const validPrice = () => newProducts.price > 0;
 
   const addProducts = () => {
@@ -44,13 +44,13 @@ function App() {
 
   return (
     <div className="wrapper">
-      <div className="add">
-        <Add
-          onChangeName={changeName}
-          onChangePrice={changePrice}
-          onAddProducts={addProducts}
-        />
-      </div>
+      <Add
+        onChangeName={changeName}
+        onChangePrice={changePrice}
+        onAddProducts={addProducts}
+        name={newProducts.name}
+        price={newProducts.price}
+      />
       <div className="list">
         {products.map((product) => (
           <Product
