@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Product from "./components/Product";
+import Add from "./components/Add";
 
 function App() {
   const productsList = [
@@ -12,9 +13,6 @@ function App() {
     price: "",
     id: 3,
   });
-
-  const [isValidName, setValidName] = useState(true);
-  const [isValidPrice, setValidPrice] = useState(true);
 
   const validName = () => newProducts.name.length > 1;
   const validPrice = () => newProducts.price > 0;
@@ -47,23 +45,11 @@ function App() {
   return (
     <div className="wrapper">
       <div className="add">
-        <label>Product name</label>
-        <input
-          onChange={changeName}
-          type="text"
-          onBlur={() => setValidName(validName())}
-          value={newProducts.name}
+        <Add
+          onChangeName={changeName}
+          onChangePrice={changePrice}
+          onAddProducts={addProducts}
         />
-        <label>Product price</label>
-        <input
-          onChange={changePrice}
-          type="number"
-          onBlur={() => setValidPrice(validPrice())}
-          value={newProducts.price}
-        />
-        <button onClick={addProducts} type="button">
-          Add
-        </button>
       </div>
       <div className="list">
         {products.map((product) => (
