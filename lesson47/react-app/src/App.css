@@ -1,0 +1,95 @@
+h1,h2,h3,p{margin: 0;}
+.wrapper{
+ min-height: 100vh;
+  background-color: #2f393d;
+  padding: 10px;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+   max-width: 400px;
+   margin: 0 auto 20px auto;
+   /* border: 2px solid rgb(225, 191, 146); */
+   padding: 2px 7px;
+}
+
+.menuLinkActive, .active{
+  color: rgb(243, 186, 112);
+  text-decoration: underline;
+}
+
+.posts-body{
+  width: 820px;
+  margin: 0 0 0 calc(50% - 250px) ;
+}
+
+.posts-body a {
+  color: blanchedalmond;
+}
+
+a{
+  font-size: 24px;
+  color:  antiquewhite;
+  text-decoration: unset;
+  display: block;
+  width: fit-content;
+}
+
+h1, p{
+  color: aliceblue;
+  text-align: center;
+}
+p{
+margin-bottom: 20px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: rgb(243, 186, 112);
+   max-width: 300px;
+   margin: 0 auto;
+}
+
+form label{
+  font-weight: 600;
+  color: #000;
+  font-size: 20px;
+}
+form input{
+  display: block;
+  margin-bottom: 10px;
+  height: 25px;
+  font-size: 16px;
+}
+form input.invalid{
+  background-color: #ee6060;
+}
+form p{
+  position: relative;
+  top: -10px;
+  color: #851b1b;
+  font-weight: 600;
+  margin-bottom: unset;
+  text-align: left;
+}
+form button{
+  width: 50%;
+  margin: 0 auto;
+  background-color: #e1821d;
+  color: rgb(25, 25, 29);
+  font-size: 16px;
+  padding: 4px 5px;
+  border-radius: 5px;
+  font-weight: 600;
+  box-shadow: 1.5px 0px 0.75px 1.75px rgba(0,0,0,0.75);
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+
+form button:active{
+  box-shadow: 0.75px 0px 0.37px 0.875px rgba(0,0,0,0.75);
+}
